@@ -12,16 +12,15 @@ Option Strict On
 Option Explicit On
 
 
-Namespace My
+
+<Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
+ Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0"),  _
+ Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
+Partial Friend NotInheritable Class MySettings
+    Inherits Global.System.Configuration.ApplicationSettingsBase
     
-    <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0"),  _
-     Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-    Partial Friend NotInheritable Class MySettings
-        Inherits Global.System.Configuration.ApplicationSettingsBase
-        
-        Private Shared defaultInstance As MySettings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New MySettings()),MySettings)
-        
+    Private Shared defaultInstance As MySettings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New MySettings()),MySettings)
+    
 #Region "My.Settings Auto-Save Functionality"
 #If _MyType = "WindowsForms" Then
     Private Shared addedHandler As Boolean
@@ -36,10 +35,10 @@ Namespace My
     End Sub
 #End If
 #End Region
-        
-        Public Shared ReadOnly Property [Default]() As MySettings
-            Get
-                
+    
+    Public Shared ReadOnly Property [Default]() As MySettings
+        Get
+            
 #If _MyType = "WindowsForms" Then
                If Not addedHandler Then
                     SyncLock addedHandlerLockObject
@@ -50,118 +49,129 @@ Namespace My
                     End SyncLock
                 End If
 #End If
-                Return defaultInstance
-            End Get
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("60")>  _
-        Public Property ProcessCycleEverySecs() As Integer
-            Get
-                Return CType(Me("ProcessCycleEverySecs"),Integer)
-            End Get
-            Set
-                Me("ProcessCycleEverySecs") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("C:\#myPrograms\DownloadSpocosyFilesAndStream\logs\")>  _
-        Public Property ProcessLogPath() As String
-            Get
-                Return CType(Me("ProcessLogPath"),String)
-            End Get
-            Set
-                Me("ProcessLogPath") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Database=OddsMatching;Data Source=eu-cdbr-azure-north-e.cloudapp.net;User Id=b083"& _ 
-            "cb50265fec;Password=263fb5f7;persistsecurityinfo=True")>  _
-        Public ReadOnly Property ConnectionString() As String
-            Get
-                Return CType(Me("ConnectionString"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("ftp://waws-prod-db3-025.ftp.azurewebsites.windows.net")>  _
-        Public Property RemoteFtpServer() As String
-            Get
-                Return CType(Me("RemoteFtpServer"),String)
-            End Get
-            Set
-                Me("RemoteFtpServer") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("WebAppBookmakerFeed20160413071258\paulowensmith1968")>  _
-        Public Property RemoteServerUser() As String
-            Get
-                Return CType(Me("RemoteServerUser"),String)
-            End Get
-            Set
-                Me("RemoteServerUser") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("PS?pos68")>  _
-        Public Property RemoteServerPassword() As String
-            Get
-                Return CType(Me("RemoteServerPassword"),String)
-            End Get
-            Set
-                Me("RemoteServerPassword") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("10")>  _
-        Public Property MaxFilesToDownload() As Integer
-            Get
-                Return CType(Me("MaxFilesToDownload"),Integer)
-            End Get
-            Set
-                Me("MaxFilesToDownload") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("/site/wwwroot/files/")>  _
-        Public Property RemoteFtpPath() As String
-            Get
-                Return CType(Me("RemoteFtpPath"),String)
-            End Get
-            Set
-                Me("RemoteFtpPath") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("C:\#myFiles\Downloaded\")>  _
-        Public Property LocalDownloadPath() As String
-            Get
-                Return CType(Me("LocalDownloadPath"),String)
-            End Get
-            Set
-                Me("LocalDownloadPath") = value
-            End Set
-        End Property
-    End Class
-End Namespace
+            Return defaultInstance
+        End Get
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("60")>  _
+    Public Property ProcessCycleEverySecs() As Integer
+        Get
+            Return CType(Me("ProcessCycleEverySecs"),Integer)
+        End Get
+        Set
+            Me("ProcessCycleEverySecs") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("C:\#myPrograms\DownloadSpocosyFilesAndStream\logs\")>  _
+    Public Property ProcessLogPath() As String
+        Get
+            Return CType(Me("ProcessLogPath"),String)
+        End Get
+        Set
+            Me("ProcessLogPath") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Database=OddsMatching;Data Source=eu-cdbr-azure-north-e.cloudapp.net;User Id=b083"& _ 
+        "cb50265fec;Password=263fb5f7;persistsecurityinfo=True")>  _
+    Public ReadOnly Property ConnectionString() As String
+        Get
+            Return CType(Me("ConnectionString"),String)
+        End Get
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("ftp://waws-prod-db3-025.ftp.azurewebsites.windows.net")>  _
+    Public Property RemoteFtpServer() As String
+        Get
+            Return CType(Me("RemoteFtpServer"),String)
+        End Get
+        Set
+            Me("RemoteFtpServer") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("WebAppBookmakerFeed20160413071258\paulowensmith1968")>  _
+    Public Property RemoteServerUser() As String
+        Get
+            Return CType(Me("RemoteServerUser"),String)
+        End Get
+        Set
+            Me("RemoteServerUser") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("PS?pos68")>  _
+    Public Property RemoteServerPassword() As String
+        Get
+            Return CType(Me("RemoteServerPassword"),String)
+        End Get
+        Set
+            Me("RemoteServerPassword") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("10")>  _
+    Public Property MaxFilesToDownload() As Integer
+        Get
+            Return CType(Me("MaxFilesToDownload"),Integer)
+        End Get
+        Set
+            Me("MaxFilesToDownload") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("/site/wwwroot/files/")>  _
+    Public Property RemoteFtpPath() As String
+        Get
+            Return CType(Me("RemoteFtpPath"),String)
+        End Get
+        Set
+            Me("RemoteFtpPath") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("C:\#myFiles\Downloaded\")>  _
+    Public Property LocalDownloadPath() As String
+        Get
+            Return CType(Me("LocalDownloadPath"),String)
+        End Get
+        Set
+            Me("LocalDownloadPath") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("5")>  _
+    Public Property NumberOfStreams() As Integer
+        Get
+            Return CType(Me("NumberOfStreams"),Integer)
+        End Get
+        Set
+            Me("NumberOfStreams") = value
+        End Set
+    End Property
+End Class
 
 Namespace My
     
@@ -169,11 +179,11 @@ Namespace My
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
     Friend Module MySettingsProperty
-
-        <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>
-        Friend ReadOnly Property Settings() As Global.DownloadRemoteFilesService.My.MySettings
+        
+        <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
+        Friend ReadOnly Property Settings() As Global.DownloadRemoteFilesService.MySettings
             Get
-                Return Global.DownloadRemoteFilesService.My.MySettings.Default
+                Return Global.DownloadRemoteFilesService.MySettings.Default
             End Get
         End Property
     End Module
