@@ -25,30 +25,25 @@
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-
-        Me.ServiceProcessInstaller1 = New System.ServiceProcess.ServiceProcessInstaller
-
-        Me.BetFairFeedService = New System.ServiceProcess.ServiceInstaller
-
+        Me.ServiceProcessInstaller1 = New System.ServiceProcess.ServiceProcessInstaller()
+        Me.DownloadRemoteFilesService = New System.ServiceProcess.ServiceInstaller()
         '
         'ServiceProcessInstaller1
         '
         Me.ServiceProcessInstaller1.Account = System.ServiceProcess.ServiceAccount.LocalSystem
         Me.ServiceProcessInstaller1.Password = Nothing
         Me.ServiceProcessInstaller1.Username = Nothing
-
         '
-        'BetFairFeedService
+        'DownloadRemoteFilesService
         '
-        Me.BetFairFeedService.Description = "Download Remote Files Service"
-        Me.BetFairFeedService.DisplayName = "DownloadRemoteFilesService"
-        Me.BetFairFeedService.ServiceName = "DownloadRemoteFilesService"
-        Me.BetFairFeedService.StartType = System.ServiceProcess.ServiceStartMode.Automatic
-
+        Me.DownloadRemoteFilesService.Description = "Download Remote Files Service"
+        Me.DownloadRemoteFilesService.DisplayName = "DownloadRemoteFilesService"
+        Me.DownloadRemoteFilesService.ServiceName = "DownloadRemoteFilesService"
+        Me.DownloadRemoteFilesService.StartType = System.ServiceProcess.ServiceStartMode.Automatic
         '
         'ProjectInstaller
         '
-        Me.Installers.AddRange(New System.Configuration.Install.Installer() {Me.ServiceProcessInstaller1, Me.BetFairFeedService})
+        Me.Installers.AddRange(New System.Configuration.Install.Installer() {Me.ServiceProcessInstaller1, Me.DownloadRemoteFilesService})
 
     End Sub
 
@@ -70,14 +65,14 @@
 
         Dim serviceName As String = Context.Parameters("servicename")
         If Not String.IsNullOrEmpty(serviceName) Then
-            Me.BetFairFeedService.DisplayName = serviceName
-            Me.BetFairFeedService.ServiceName = serviceName
+            Me.DownloadRemoteFilesService.DisplayName = serviceName
+            Me.DownloadRemoteFilesService.ServiceName = serviceName
         End If
 
     End Sub
 
     Friend WithEvents ServiceProcessInstaller1 As System.ServiceProcess.ServiceProcessInstaller
-    Friend WithEvents BetFairFeedService As System.ServiceProcess.ServiceInstaller
+    Friend WithEvents DownloadRemoteFilesService As System.ServiceProcess.ServiceInstaller
 
 End Class
 

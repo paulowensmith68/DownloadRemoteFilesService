@@ -2,7 +2,6 @@
 Imports System.Text
 
 Public Class DownloadRemoteFilesService
-
     Inherits System.ServiceProcess.ServiceBase
 
     Private worker As New Worker()

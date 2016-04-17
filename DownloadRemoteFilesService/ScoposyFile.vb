@@ -20,7 +20,10 @@ Public Class ScoposyFile
     Dim fileNameList As New List(Of String)
 
     ' Ftp variables
-    Public ftp As New FTP("WebAppBookmakerFeed20160413071258\paulowensmith1968", "PS?pos68")
+    Public ftp As New FTP(My.Settings.RemoteServerUser, My.Settings.RemoteServerPassword)
+
+    ' Stream integer
+    Public intNextStream As Integer = 0
 
     Public Sub DownloadFiles()
         '-----------------------------------------------------------------------*
@@ -56,7 +59,7 @@ Public Class ScoposyFile
                     fileNameList.Add(fullFilename)
 
                     ' Leave cursor when we hit limit
-                    If intCursorCount > My.Settings.MaxFilesToDownload Then
+                    If intCursorCount >= My.Settings.MaxFilesToDownload Then
                         Exit While
                     End If
 
@@ -76,10 +79,13 @@ Public Class ScoposyFile
         For Each filename In fileNameList
 
             ' Ftp download the file and remove from remote server
-            ftpFile(filename)
+            FtpFile(filename)
 
             ' Delete the entry from saved_xml
             DeleteSavedXml(filename)
+
+            ' Insert entry of saved_streammed_xml
+            InsertLocalXml(filename)
 
         Next
 
@@ -122,6 +128,45 @@ Public Class ScoposyFile
 
         Finally
 
+            myConnection.Close()
+
+        End Try
+
+    End Sub
+
+    Private Sub InsertLocalXml(filename As String)
+
+        'Insert id into local_xml (log table)
+        Dim myConnection As New MySqlConnection(connectionString)
+        Dim myCommand As New MySqlCommand("INSERT INTO `oddsmatching`.`saved_streammed_xml` (`id`, `stream`) VALUES (@id, @stream)")
+        myCommand.CommandType = CommandType.Text
+        myCommand.Connection = myConnection
+
+        ' Set stream number
+        If intNextStream = 0 Then
+            intNextStream = 1
+        Else
+            intNextStream = intNextStream + 1
+            If intNextStream > My.Settings.NumberOfStreams Then
+                intNextStream = 1
+            End If
+        End If
+
+        Dim strId As String = filename.Replace(".xml", "")
+        Dim id As Integer = Convert.ToInt32(strId)
+        myCommand.Parameters.Add(New MySqlParameter("id", id))
+        myCommand.Parameters.Add(New MySqlParameter("stream", intNextStream))
+
+        Try
+
+            myConnection.Open()
+            myCommand.ExecuteNonQuery()
+
+        Catch
+
+        Finally
+
+            myCommand.Dispose()
             myConnection.Close()
 
         End Try

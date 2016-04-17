@@ -55,7 +55,7 @@ Partial Friend NotInheritable Class MySettings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("60")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("10")>  _
     Public Property ProcessCycleEverySecs() As Integer
         Get
             Return CType(Me("ProcessCycleEverySecs"),Integer)
@@ -67,7 +67,7 @@ Partial Friend NotInheritable Class MySettings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("C:\#myPrograms\DownloadSpocosyFilesAndStream\logs\")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("C:\#myPrograms\DownloadRemoteFilesService\logs\")>  _
     Public Property ProcessLogPath() As String
         Get
             Return CType(Me("ProcessLogPath"),String)
